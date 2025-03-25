@@ -3,5 +3,13 @@
 *,
 *::after,
 *::before {
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
+}
+
+.home-header-bg {
+  background-image: url("../assets/images/home-hero.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
