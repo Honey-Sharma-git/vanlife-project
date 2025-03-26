@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
+import { Link } from "react-router-dom";
 import "../../server";
+
+export const URL = "/api/vans";
+export async function getData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.vans;
+}
 
 export const Vans = () => {
   const [vans, setVans] = useState([]);
 
   useEffect(() => {
-    getData();
+    getData(URL).then((res) => {
+      setVans(res);
+    });
   }, []);
 
-  async function getData() {
-    const response = await fetch("/api/vans");
-    const data = await response.json();
-    setVans(data.vans);
-  }
   const vansElements = vans.map((van) => {
     return (
-      <section key={van.id} className="p-1 flex flex-col gap-3 items-start">
+      <Link
+        to={van.id}
+        key={van.id}
+        className="p-1 flex flex-col gap-3 items-start"
+      >
         <img
           className="h-52 aspect-square rounded-lg"
           src={van.imageUrl}
@@ -35,7 +44,7 @@ export const Vans = () => {
         >
           {van.type}
         </mark>
-      </section>
+      </Link>
     );
   });
   return (
