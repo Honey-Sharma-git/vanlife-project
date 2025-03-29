@@ -14,6 +14,9 @@ export const Header = () => {
         <Link className="hover:underline" to={"/vans"}>
           Vans
         </Link>
+        <Link className="hover:underline" to={"/host"}>
+          Host
+        </Link>
       </nav>
     </header>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../../server";
+import "../../../server";
 
 export const URL = "/api/vans";
 export async function getData(url) {
