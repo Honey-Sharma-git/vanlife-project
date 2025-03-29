@@ -8,6 +8,7 @@ import { Layout } from "./components/Layout";
 import { Dashboard } from "./pages/host/Dashboard";
 import { Income } from "./pages/host/Income";
 import { Reviews } from "./pages/host/Reviews";
+import { HostLayout } from "./components/HostLayout";
 
 export const App = () => {
   return (
@@ -18,9 +19,11 @@ export const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} />
 
-          <Route path="/host" element={<Dashboard />} />
-          <Route path="/host/income" element={<Income />} />
-          <Route path="/host/reviews" element={<Reviews />} />
+          <Route element={<HostLayout />}>
+            <Route path="/host" element={<Dashboard />} />
+            <Route path="/host/income" element={<Income />} />
+            <Route path="/host/reviews" element={<Reviews />} />
+          </Route>
 
           <Route path="/vans/:id" element={<VanDetail />} />
         </Route>
