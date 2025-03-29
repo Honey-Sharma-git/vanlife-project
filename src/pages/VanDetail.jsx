@@ -1,12 +1,10 @@
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import { getData } from "./Vans";
 import { useEffect, useState } from "react";
 import { URL } from "./Vans";
 
 export const VanDetail = () => {
-  const [van, setVan] = useState("");
+  const [van, setVan] = useState();
   const params = useParams();
 
   useEffect(() => {
@@ -14,11 +12,9 @@ export const VanDetail = () => {
       setVan(res);
     });
   }, [params.id]);
-  console.log(van);
 
   return (
     <main>
-      <Navbar />
       {van ? (
         <section className="flex flex-col gap-5 items-start p-5">
           <img
@@ -43,7 +39,6 @@ export const VanDetail = () => {
       ) : (
         <h2 className="font-bold text-4xl">Loading...</h2>
       )}
-      <Footer />
     </main>
   );
 };

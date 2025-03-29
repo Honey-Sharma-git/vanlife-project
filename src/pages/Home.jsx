@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
 export const Home = () => {
   return (
     <main className="min-h-screen  ">
-      <Navbar />
       <header className="home-header-bg">
         <div className=" bg-gray-900/70 p-5 flex flex-col gap-8 py-20 ">
           <h2 className="text-4xl text-white font-bold">
@@ -23,7 +20,6 @@ export const Home = () => {
           </Link>
         </div>
       </header>
-      <Footer />
     </main>
   );
 };

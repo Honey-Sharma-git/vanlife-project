@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 import { Link } from "react-router-dom";
 import "../../server";
 
@@ -13,7 +11,6 @@ export async function getData(url) {
 
 export const Vans = () => {
   const [vans, setVans] = useState([]);
-
   useEffect(() => {
     getData(URL).then((res) => {
       setVans(res);
@@ -23,7 +20,7 @@ export const Vans = () => {
   const vansElements = vans.map((van) => {
     return (
       <Link
-        to={van.id}
+        to={`/vans/${van.id}`}
         key={van.id}
         className="p-1 flex flex-col gap-3 items-start"
       >
@@ -49,7 +46,6 @@ export const Vans = () => {
   });
   return (
     <main>
-      <Navbar />
       <div className="flex flex-col items-center">
         <h1 className=" text-4xl font-medium text-center">
           Explore our van options
@@ -58,7 +54,6 @@ export const Vans = () => {
           {vansElements}
         </article>
       </div>
-      <Footer />
     </main>
   );
 };

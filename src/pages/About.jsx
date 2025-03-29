@@ -1,11 +1,8 @@
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 import { Link } from "react-router-dom";
 import bgImg from "../assets/images/about-hero.png";
 export const About = () => {
   return (
     <main>
-      <Navbar />
       <img src={bgImg} alt="about image" />
       <article className="p-5 flex flex-col gap-5">
         <h2 className="font-bold text-4xl">
@@ -30,7 +27,6 @@ export const About = () => {
           </Link>
         </section>
       </article>
-      <Footer />
     </main>
   );
 };
