@@ -13,7 +13,7 @@ export const HostLayout = () => {
           style={({ isActive }) => {
             return isActive ? activeStyles : null;
           }}
-          to={"/host"}
+          to={"."}
         >
           Dashboard
         </NavLink>
@@ -21,7 +21,7 @@ export const HostLayout = () => {
           style={({ isActive }) => {
             return isActive ? activeStyles : null;
           }}
-          to={"/host/income"}
+          to={"income"}
         >
           Income
         </NavLink>
@@ -29,7 +29,7 @@ export const HostLayout = () => {
           style={({ isActive }) => {
             return isActive ? activeStyles : null;
           }}
-          to={"/host/vans"}
+          to={"vans"}
         >
           Vans
         </NavLink>
@@ -37,7 +37,7 @@ export const HostLayout = () => {
           style={({ isActive }) => {
             return isActive ? activeStyles : null;
           }}
-          to={"/host/reviews"}
+          to={"reviews"}
         >
           Reviews
         </NavLink>
