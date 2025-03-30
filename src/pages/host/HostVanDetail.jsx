@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 export const HostVanDetail = () => {
   const [vanDetail, setVanDetail] = useState([]);
@@ -41,12 +41,40 @@ export const HostVanDetail = () => {
   return (
     <>
       <nav className="m-5">
-        <Link className="hover:underline" to={"/host/vans"}>
+        <Link className="hover:underline" to={".."} relative="path">
           &#8592; Back to all vans
         </Link>
       </nav>
-      <article className="m-5 bg-white p-5 rounded-lg">
+      <article className="m-5 bg-white p-5 rounded-lg flex flex-col gap-3">
         {vanDetailElement.length > 0 ? vanDetailElement : <p>Loading...</p>}
+        <nav className=" flex flex-row gap-3">
+          <NavLink
+            end
+            className={({ isActive }) => {
+              return isActive ? "underline font-bold" : "hover:underline";
+            }}
+            to={"."}
+          >
+            Details
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => {
+              return isActive ? "underline font-bold" : "hover:underline";
+            }}
+            to={"pricing"}
+          >
+            Pricing
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => {
+              return isActive ? "underline font-bold" : "hover:underline";
+            }}
+            to={"photos"}
+          >
+            Photos
+          </NavLink>
+        </nav>
+        <Outlet />
       </article>
     </>
   );
