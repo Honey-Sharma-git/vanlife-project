@@ -8,7 +8,7 @@ export const HostLayout = () => {
   const inactiveStyles = {};
   return (
     <>
-      <nav className="flex flex-row rounded-2xl drop-shadow-2xl bg-amber-500 text-white gap-5 justify-between w-1/3 py-1 px-5">
+      <nav className="flex flex-row drop-shadow-2xl gap-5 justify-start py-1 px-5">
         <NavLink
           end={true}
           style={({ isActive }) => {
@@ -25,6 +25,14 @@ export const HostLayout = () => {
           to={"/host/income"}
         >
           Income
+        </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            return isActive ? activeStyles : null;
+          }}
+          to={"/host/vans"}
+        >
+          Vans
         </NavLink>
         <NavLink
           style={({ isActive }) => {
