@@ -5,7 +5,6 @@ export const HostLayout = () => {
     color: "#161616",
     textDecoration: "underline",
   };
-  const inactiveStyles = {};
   return (
     <>
       <nav className="flex flex-row drop-shadow-2xl gap-5 justify-start py-1 px-5">
