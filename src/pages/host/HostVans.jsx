@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export const HostVans = () => {
   const [hostVans, setHostVans] = useState([]);
 
@@ -16,7 +15,7 @@ export const HostVans = () => {
       setHostVans(res);
     });
   }, []);
-  
+
   const hostVansElement = hostVans.map((van) => {
     return (
       <Link to={`/host/vans/${van.id}`} key={van.id}>
