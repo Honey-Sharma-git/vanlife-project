@@ -20,13 +20,19 @@ import { HostVanPricing } from "./pages/host/HostVanPricing";
 import { HostVanInfo } from "./pages/host/HostVanInfo";
 import { PageNotFound } from "./pages/PageNotFound";
 import { loader as vansLoader } from "./pages/vans/Vans";
+import { ErrorElement } from "./components/ErrorElement";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} loader={vansLoader} />
+      <Route
+        path="vans"
+        element={<Vans />}
+        loader={vansLoader}
+        errorElement={<ErrorElement />}
+      />
       <Route path="/vans/:id" element={<VanDetail />} />
 
       <Route path="host" element={<HostLayout />}>
