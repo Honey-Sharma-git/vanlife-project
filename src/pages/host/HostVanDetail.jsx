@@ -8,9 +8,9 @@ export const HostVanDetail = () => {
   async function getHostVanDetail() {
     const response = await fetch(`/api/host/vans/${params.id}`);
     const data = await response.json();
-    return data.vans[0];
+    return data.vans;
   }
-
+  console.log(vanDetail);
   useEffect(() => {
     getHostVanDetail().then((res) => {
       setVanDetail(res);

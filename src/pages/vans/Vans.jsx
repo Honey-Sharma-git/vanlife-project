@@ -2,23 +2,30 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../../server";
+import { getData } from "../../api";
 
 export const URL = "/api/vans";
-export async function getData(url) {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data.vans;
-}
 
 export const Vans = () => {
+  const [loading, setLoading] = useState(false);
   const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
-
+  const [error, setError] = useState(null);
+  console.log(error);
   useEffect(() => {
-    getData(URL).then((res) => {
-      setVans(res);
-    });
+    async function loadVans(URL) {
+      setLoading(true);
+      try {
+        const vansData = await getData(URL);
+        setVans(vansData);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadVans(URL);
   }, []);
 
   const displayedVans = typeFilter
@@ -55,6 +62,13 @@ export const Vans = () => {
     );
   });
 
+  //Early return
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+  if (error) {
+    return <h1>There is an error {error.message}</h1>;
+  }
   return (
     <main>
       <div className="flex flex-col items-center">

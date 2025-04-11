@@ -1,5 +1,5 @@
 import { Link, useParams, useLocation } from "react-router-dom";
-import { getData } from "./Vans";
+import { getData } from "../../api";
 import { useEffect, useState } from "react";
 import { URL } from "./Vans";
 
@@ -7,7 +7,6 @@ export const VanDetail = () => {
   const [van, setVan] = useState();
   const params = useParams();
   const location = useLocation();
-
   const searchQuery = location.state.search
     ? `../?${location.state.search}`
     : `..`;
