@@ -14,6 +14,7 @@ import { HostVanDetail } from "./pages/host/HostVanDetail";
 import { HostVanPhotos } from "./pages/host/HostVanPhotos";
 import { HostVanPricing } from "./pages/host/HostVanPricing";
 import { HostVanInfo } from "./pages/host/HostVanInfo";
+import { PageNotFound } from "./pages/PageNotFound";
 
 export const App = () => {
   return (
@@ -37,6 +38,7 @@ export const App = () => {
 
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
