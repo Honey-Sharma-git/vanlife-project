@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { getData } from "./Vans";
 import { useEffect, useState } from "react";
 import { URL } from "./Vans";
@@ -6,6 +6,15 @@ import { URL } from "./Vans";
 export const VanDetail = () => {
   const [van, setVan] = useState();
   const params = useParams();
+  const location = useLocation();
+
+  const searchQuery = location.state.search
+    ? `../?${location.state.search}`
+    : `..`;
+
+  const linkText = location.state.type
+    ? `Back to ${location.state.type} vans`
+    : "Back to all vans";
 
   useEffect(() => {
     getData(`${URL}/${params.id}`).then((res) => {
@@ -14,9 +23,17 @@ export const VanDetail = () => {
   }, [params.id]);
 
   return (
-    <main>
+    <main className="p-5">
+      <Link
+        to={searchQuery}
+        relative="path"
+        className="hover:underline mb-5 block"
+      >
+        <span className="text-xl">&#8592;</span>
+        {linkText}
+      </Link>
       {van ? (
-        <section className="flex flex-col gap-5 items-start p-5">
+        <section className="flex flex-col gap-5 items-start ">
           <img
             className="w-[40%] aspect-square rounded-lg"
             src={van.imageUrl}

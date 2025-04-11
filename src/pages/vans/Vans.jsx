@@ -14,7 +14,6 @@ export const Vans = () => {
   const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
-  console.log(typeFilter);
 
   useEffect(() => {
     getData(URL).then((res) => {
@@ -30,7 +29,8 @@ export const Vans = () => {
   const vansElements = displayedVans.map((van) => {
     return (
       <Link
-        to={`/vans/${van.id}`}
+        state={{ search: searchParams.toString(), type: typeFilter }}
+        to={van.id}
         key={van.id}
         className="p-1 flex flex-col gap-3 items-start"
       >
@@ -61,6 +61,7 @@ export const Vans = () => {
         <h1 className=" text-4xl font-medium text-center">
           Explore our van options
         </h1>
+        {/* Type filters */}
         <div className="flex flex-row justify-center gap-4">
           <button
             className={`bg-amber-200 cursor-pointer p-1 rounded-sm px-4 hover:bg-amber-500 ${

@@ -18,7 +18,7 @@ export const HostVans = () => {
 
   const hostVansElement = hostVans.map((van) => {
     return (
-      <Link to={`/host/vans/${van.id}`} key={van.id}>
+      <Link to={van.id} key={van.id}>
         <li className=" bg-white flex flex-row items-center py-3 px-5 gap-5 rounded-lg drop-shadow-lg">
           <img
             className="h-20 rounded-lg"
