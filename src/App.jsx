@@ -9,7 +9,6 @@ import { About } from "./pages/About";
 import { Vans } from "./pages/vans/Vans";
 import { VanDetail } from "./pages/vans/VanDetail";
 import { Layout } from "./components/Layout";
-
 import { Dashboard } from "./pages/host/Dashboard";
 import { Income } from "./pages/host/Income";
 import { Reviews } from "./pages/host/Reviews";
@@ -20,13 +19,14 @@ import { HostVanPhotos } from "./pages/host/HostVanPhotos";
 import { HostVanPricing } from "./pages/host/HostVanPricing";
 import { HostVanInfo } from "./pages/host/HostVanInfo";
 import { PageNotFound } from "./pages/PageNotFound";
+import { loader as vansLoader } from "./pages/vans/Vans";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
-      <Route path="vans" element={<Vans />} />
+      <Route path="vans" element={<Vans />} loader={vansLoader} />
       <Route path="/vans/:id" element={<VanDetail />} />
 
       <Route path="host" element={<HostLayout />}>

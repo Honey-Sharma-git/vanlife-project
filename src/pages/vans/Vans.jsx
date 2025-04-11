@@ -1,32 +1,23 @@
-import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLoaderData, useSearchParams } from "react-router-dom";
+import {  useState } from "react";
 import { Link } from "react-router-dom";
 import "../../../server";
 import { getData } from "../../api";
 
 export const URL = "/api/vans";
 
+export function loader() {
+  return getData(URL);
+}
+
 export const Vans = () => {
-  const [loading, setLoading] = useState(false);
-  const [vans, setVans] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
+
   const [error, setError] = useState(null);
-  console.log(error);
-  useEffect(() => {
-    async function loadVans(URL) {
-      setLoading(true);
-      try {
-        const vansData = await getData(URL);
-        setVans(vansData);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadVans(URL);
-  }, []);
+
+  const vans = useLoaderData();
+  console.log(vans);
 
   const displayedVans = typeFilter
     ? vans.filter((van) => {
@@ -63,9 +54,6 @@ export const Vans = () => {
   });
 
   //Early return
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
   if (error) {
     return <h1>There is an error {error.message}</h1>;
   }
