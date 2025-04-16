@@ -17,7 +17,6 @@ export const Vans = () => {
   const [error, setError] = useState(null);
 
   const vans = useLoaderData();
-  console.log(vans);
 
   const displayedVans = typeFilter
     ? vans.filter((van) => {
